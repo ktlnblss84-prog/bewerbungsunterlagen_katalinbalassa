@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Katalin Balassa – Bewerbungsmappe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f7f4f0;
+      --warm:    #ede8e0;
+      --clay:    #c9a87c;
+      --umber:   #7a5c3e;
+      --bark:    #3e2c1c;
+      --sage:    #8a9e7e;
+      --cream:   #fdfcfa;
+      --ink:     #2a1e12;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244,237,224,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--warm);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--umber);
+      letter-spacing: 0.02em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--umber);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 1; }
+
+    /* ── HERO ── */
+    header {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 30% 40%, rgba(201,168,124,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 75% 65%, rgba(138,158,126,0.18) 0%, transparent 55%),
+        var(--sand);
+      z-index: 0;
+    }
+
+    /* Decorative botanical lines */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23c9a87c' stroke-width='0.6' opacity='0.3'%3E%3Cellipse cx='400' cy='400' rx='320' ry='320'/%3E%3Cellipse cx='400' cy='400' rx='240' ry='240'/%3E%3Cellipse cx='400' cy='400' rx='160' ry='160'/%3E%3Cline x1='400' y1='80' x2='400' y2='720'/%3E%3Cline x1='80' y1='400' x2='720' y2='400'/%3E%3Cline x1='174' y1='174' x2='626' y2='626'/%3E%3Cline x1='626' y1='174' x2='174' y2='626'/%3E%3C/g%3E%3C/svg%3E");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 80vmin 80vmin;
+      opacity: 0.6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 600;
+      color: var(--bark);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero-subtitle {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--umber);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--ink);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--umber);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+    .hero-cta:hover { background: var(--bark); transform: translateY(-2px); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      color: var(--bark);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .divider {
+      width: 3rem;
+      height: 2px;
+      background: var(--clay);
+      margin: 1rem 0 2rem;
+      border-radius: 1px;
+    }
+
+    /* ── ÜBER MICH ── */
+    #ueber {
+      background: var(--sand);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-portrait {
+      aspect-ratio: 3/4;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+      color: var(--ink);
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.8rem;
+      border: 1.5px solid var(--clay);
+      color: var(--umber);
+      border-radius: 2px;
+    }
+
+    /* ── QUALIFIKATIONEN ── */
+    #qualifikationen {
+      background: var(--cream);
+    }
+
+    .quali-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .quali-card {
+      background: var(--sand);
+      border: 1px solid var(--warm);
+      padding: 1.8rem;
+      border-radius: 2px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quali-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--clay);
+    }
+
+    .quali-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(122,92,62,0.1);
+    }
+
+    .quali-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .quali-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--bark);
+      margin-bottom: 0.5rem;
+    }
+
+    .quali-card p {
+      font-size: 0.85rem;
+      color: var(--umber);
+      line-height: 1.6;
+    }
+
+    /* ── LEBENSLAUF ── */
+    #lebenslauf {
+      background: var(--warm);
+    }
+
+    .cv-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .cv-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--clay), transparent);
+    }
+
+    .cv-entry {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .cv-entry::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.45rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--clay);
+      border: 2px solid var(--cream);
+    }
+
+    .cv-meta {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .cv-entry h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      color: var(--bark);
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .cv-org {
+      font-size: 0.88rem;
+      color: var(--umber);
+      font-style: italic;
+      margin-bottom: 0.4rem;
+    }
+
+    .cv-entry p {
+      font-size: 0.87rem;
+      color: var(--ink);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--bark);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .download-btn:hover { background: var(--umber); transform: translateY(-2px); }
+
+    .download-btn svg {
+      width: 16px; height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── ZEUGNISSE ── */
+    #zeugnisse {
+      background: var(--cream);
+    }
+
+    .zeugnis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .zeugnis-card {
+      background: var(--sand);
+      border: 1px solid var(--warm);
+      padding: 1.5rem;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .zeugnis-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(122,92,62,0.1);
+    }
+
+    .zeugnis-icon {
+      font-size: 2rem;
+      opacity: 0.7;
+    }
+
+    .zeugnis-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--bark);
+    }
+
+    .zeugnis-card span {
+      font-size: 0.8rem;
+      color: var(--umber);
+    }
+
+    .zeugnis-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--sage);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: auto;
+      transition: color 0.2s;
+    }
+    .zeugnis-dl:hover { color: var(--umber); }
+
+    .zeugnis-note {
+      font-size: 0.82rem;
+      color: var(--umber);
+      font-style: italic;
+      background: var(--warm);
+      border-left: 3px solid var(--clay);
+      padding: 0.8rem 1.2rem;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── KONTAKT ── */
+    #kontakt {
+      background: var(--bark);
+      color: var(--cream);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    #kontakt h2 { color: var(--clay); }
+    #kontakt .section-label { color: var(--sage); }
+    #kontakt .divider { background: var(--clay); margin-left: auto; margin-right: auto; }
+
+    .kontakt-info {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .kontakt-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .kontakt-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-weight: 600;
+    }
+
+    .kontakt-value {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      color: var(--sand);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--warm);
+      text-align: center;
+      font-size: 0.78rem;
+      padding: 1.2rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav ul { gap: 1rem; }
+      nav a { font-size: 0.75rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-portrait { aspect-ratio: 2/1; font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="logo">K. Balassa</span>
+    <ul>
+      <li><a href="#ueber">Über mich</a></li>
+      <li><a href="#qualifikationen">Qualifikationen</a></li>
+      <li><a href="#lebenslauf">Lebenslauf</a></li>
+      <li><a href="#zeugnisse">Zeugnisse</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Bewerbungsmappe</p>
+      <h1>Katalin Balassa</h1>
+      <p class="hero-subtitle">Koordination · Interkulturelles Arbeiten · Verwaltung</p>
+      <p class="hero-desc">
+        Erfahrene Organisationsfachkraft mit über 13 Jahren strukturierter Koordinationstätigkeit,
+        auf der Suche nach einer sinnvollen Aufgabe im sozialen oder kulturellen Umfeld.
+      </p>
+      <a href="#ueber" class="hero-cta">Mehr erfahren ↓</a>
+    </div>
+  </header>
+
+  <!-- ÜBER MICH -->
+  <section id="ueber">
+    <div class="section-inner">
+      <p class="section-label">Vorstellung</p>
+      <h2>Über mich</h2>
+      <div class="divider"></div>
+      <div class="about-grid">
+        <div class="about-portrait">
+          <img src="foto.jpg" alt="Katalin Balassa" />
+        </div>
+        <div class="about-text">
+          <p>
+            Ich bin Katalin Balassa, in Ungarn geboren und seit über 17 Jahren in Österreich zu Hause.
+            Meine berufliche Laufbahn war geprägt von Logistikkoordination, Teamführung und
+            organisatorischer Verantwortung, die ich mit dem Abschluss der Werkmeisterin für
+            Logistikmanagement (NQR Stufe 5) untermauert habe.
+          </p>
+          <p>
+            Ich bringe interkulturelle Kompetenz, analytisches Denken und ausgeprägte Empathie mit,
+            und den Wunsch, in einer Organisation zu arbeiten, deren Werte ich teile. Ich bin offen
+            für Vollzeitstellen sowie für Teilzeit ab 30 Stunden wöchentlich, und interessiere mich
+            ausdrücklich auch für Umschulungsmöglichkeiten und Quereinsteigerpositionen.
+          </p>
+          <p>
+            Darüber hinaus übersetze ich projektweise für gemeinnützige Organisationen
+            (Deutsch und Ungarisch) und unterrichte ehrenamtlich Deutsch für Migrant:innen.
+          </p>
+          <div class="about-tags">
+            <span class="tag">Koordination</span>
+            <span class="tag">Interkulturelles Arbeiten</span>
+            <span class="tag">Deutsch C1</span>
+            <span class="tag">Ungarisch (Muttersprache)</span>
+            <span class="tag">Übersetzung</span>
+            <span class="tag">Teamarbeit</span>
+            <span class="tag">Vollzeit oder Teilzeit ab 30h</span>
+            <span class="tag">Quereinstieg willkommen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIFIKATIONEN -->
+  <section id="qualifikationen">
+    <div class="section-inner">
+      <p class="section-label">Kompetenzen</p>
+      <h2>Qualifikationen</h2>
+      <div class="divider"></div>
+      <div class="quali-grid">
+
+        <div class="quali-card">
+          <div class="quali-icon">🗂</div>
+          <h3>Koordination & Organisation</h3>
+          <p>Planung und Steuerung von Abläufen, Terminmanagement, Schnittstellenarbeit zwischen
+          Teams und Bereichen. Über 13 Jahre praktische Erfahrung.</p>
+        </div>
+
+        <div class="quali-card">
+          <div class="quali-icon">🌍</div>
+          <h3>Interkulturelles Arbeiten</h3>
+          <p>Mehrsprachiger Hintergrund (Ungarisch als Muttersprache, Deutsch C1, Englisch passiv),
+          interkulturelle Sensibilität und Erfahrung in diversen Arbeitsumfeldern.</p>
+        </div>
+
+        <div class="quali-card">
+          <div class="quali-icon">✍️</div>
+          <h3>Übersetzung & Spracharbeit</h3>
+          <p>Projektweise Übersetzungen Deutsch und Ungarisch für gemeinnützige Organisationen,
+          ehrenamtlicher Deutschunterricht für Erwachsene.</p>
+        </div>
+
+        <div class="quali-card">
+          <div class="quali-icon">💻</div>
+          <h3>Digitale Kompetenzen</h3>
+          <p>SAP, MS Office (Excel, Word, Outlook), Grundkenntnisse in digitalen Verwaltungstools,
+          lernbereit für neue Software.</p>
+        </div>
+
+        <div class="quali-card">
+          <div class="quali-icon">📋</div>
+          <h3>Verwaltung & Backoffice</h3>
+          <p>Schriftverkehr, Ablageorganisation, Terminplanung, interne Kommunikation.
+          Verlässlich, strukturiert und diskret.</p>
+        </div>
+
+        <div class="quali-card">
+          <div class="quali-icon">🔄</div>
+          <h3>Quereinstieg & Umschulung</h3>
+          <p>Offen für neue Tätigkeitsfelder im sozialen und kulturellen Bereich,
+          motiviert für begleitete Einarbeitung und Weiterbildung.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LEBENSLAUF -->
+  <section id="lebenslauf">
+    <div class="section-inner">
+      <p class="section-label">Werdegang</p>
+      <h2>Lebenslauf</h2>
+      <div class="divider"></div>
+
+      <div class="cv-timeline">
+
+        <div class="cv-entry">
+          <p class="cv-meta">laufend</p>
+          <h3>Ehrenamtliche Deutschlehrerin & projektweise Übersetzerin</h3>
+          <p class="cv-org">Nonprofit-Organisationen (DE/HU)</p>
+          <p>Deutschunterricht für Erwachsene mit Migrationshintergrund: Bedarfe ermitteln,
+          Lernunterlagen erstellen, persönliche Begleitung. Projektweise Übersetzungsarbeiten
+          Deutsch und Ungarisch für zivilgesellschaftliche Organisationen.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-meta">Jän. 2021 – Feb. 2026</p>
+          <h3>Teamleiterin Logistik</h3>
+          <p class="cv-org">Schiedel GmbH, Nußbach</p>
+          <p>Koordination und Planung eines 8–10-köpfigen Teams inkl. Arbeitseinteilung und
+          Personalplanung; Schnittstellenarbeit zwischen Lager, Produktion, Vertrieb und externen
+          Partnern; Prozessoptimierung, KPI-Auswertungen, Inventurverantwortung,
+          Auditvorbereitungen und Qualitätssicherung.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-meta">Feb. 2015 – Jän. 2021</p>
+          <h3>Sachbearbeiterin Logistik</h3>
+          <p class="cv-org">Schiedel GmbH, Nußbach</p>
+          <p>Abstimmung zwischen Verkauf, Produktion und Lager; Versandplanung,
+          Reklamationsbearbeitung, Lieferdokumentation, Warenfluss-Steuerung;
+          Rechnungsprüfung und Freigabe.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-meta">Sep. 2023 – Jul. 2025</p>
+          <h3>Werkmeisterin Logistikmanagement (NQR Stufe 5)</h3>
+          <p class="cv-org">WIFI Wels</p>
+          <p>Anerkannte österreichische Qualifikation auf Niveau 5 des Nationalen
+          Qualifikationsrahmens, mit Schwerpunkten in Logistikmanagement,
+          Betriebsorganisation und Führung.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-meta">2012 – 2013</p>
+          <h3>Speditionskauffrau (LAP)</h3>
+          <p class="cv-org">BFI / Humenberger-Riesenhuber GmbH</p>
+          <p>Lehrabschlussprüfung im Speditionswesen.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-meta">1998 – 2002</p>
+          <h3>AHS Matura</h3>
+          <p class="cv-org">Radnóti Miklós Kísérleti Gimnázium, Szeged (HU)</p>
+          <p>Allgemeine Hochschulreife.</p>
+        </div>
+
+      </div>
+
+      <a href="lebenslauf.pdf" class="download-btn">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Lebenslauf herunterladen (PDF)
+      </a>
+    </div>
+  </section>
+
+  <!-- ZEUGNISSE -->
+  <section id="zeugnisse">
+    <div class="section-inner">
+      <p class="section-label">Dokumente</p>
+      <h2>Dienstzeugnisse & Nachweise</h2>
+      <div class="divider"></div>
+
+      <div class="zeugnis-grid">
+
+        <div class="zeugnis-card">
+          <div class="zeugnis-icon">📄</div>
+          <h3>Dienstzeugnis</h3>
+          <span>Schiedel GmbH, 2015–2026</span>
+          <a href="dienstzeugnis-schiedel.pdf" class="zeugnis-dl">
+            ↓ Herunterladen
+          </a>
+        </div>
+
+        <div class="zeugnis-card">
+          <div class="zeugnis-icon">🎓</div>
+          <h3>Werkmeisterin Logistikmanagement</h3>
+          <span>WIFI Wels, NQR Stufe 5</span>
+          <a href="werkmeister-nqr5.pdf" class="zeugnis-dl">
+            ↓ Herunterladen
+          </a>
+        </div>
+
+        <div class="zeugnis-card">
+          <div class="zeugnis-icon">📜</div>
+          <h3>Speditionskauffrau (LAP)</h3>
+          <span>BFI / Humenberger-Riesenhuber GmbH</span>
+          <a href="lap-spedition.pdf" class="zeugnis-dl">
+            ↓ Herunterladen
+          </a>
+        </div>
+
+        <div class="zeugnis-card">
+          <div class="zeugnis-icon">📜</div>
+          <h3>AHS Matura</h3>
+          <span>Radnóti Miklós Gimnázium, Szeged</span>
+          <a href="matura.pdf" class="zeugnis-dl">
+            ↓ Herunterladen
+          </a>
+        </div>
+
+        <div class="zeugnis-card">
+          <div class="zeugnis-icon">🌐</div>
+          <h3>Business Communication English B1</h3>
+          <span>Englisch, berufliche Kommunikation</span>
+          <a href="englisch-b1.pdf" class="zeugnis-dl">
+            ↓ Herunterladen
+          </a>
+        </div>
+
+      </div>
+
+      <p class="zeugnis-note">
+        Weitere Unterlagen (Empfehlungsschreiben, Fortbildungsnachweise etc.)
+        werden auf Anfrage gerne zur Verfügung gestellt.
+      </p>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <p class="section-label">Erreichbarkeit</p>
+    <h2>Kontakt</h2>
+    <div class="divider"></div>
+    <div class="kontakt-info">
+      <div class="kontakt-item">
+        <span class="kontakt-label">Name</span>
+        <span class="kontakt-value">Katalin Balassa</span>
+      </div>
+      <div class="kontakt-item">
+        <span class="kontakt-label">E-Mail</span>
+        <span class="kontakt-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9af1fbeefbf6f3f4b4f8fbf6fbe9e9fbdafdf7e2b4fbee">[email&#160;protected]</a></span>
+      </div>
+      <div class="kontakt-item">
+        <span class="kontakt-label">Telefon</span>
+        <sp
